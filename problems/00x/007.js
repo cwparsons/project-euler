@@ -1,5 +1,5 @@
 /**
- * 7.js
+ * problems/00x/007.js
  * 10001st prime
  */
 

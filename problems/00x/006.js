@@ -1,5 +1,5 @@
 /**
- * 6.js
+ * problems/00x/006.js
  * Sum square difference
  */
 

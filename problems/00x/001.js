@@ -1,5 +1,5 @@
 /**
- * 1.js
+ * problems/00x/001.js
  * Multiples of 3 and 5
  */
 

@@ -1,5 +1,5 @@
 /**
- * 3.js
+ * problems/00x/003.js
  * Largest prime factor
  */
 

@@ -1,5 +1,5 @@
 /**
- * 9.js
+ * problems/00x/009.js
  * Special Pythagorean triplet
  */
 

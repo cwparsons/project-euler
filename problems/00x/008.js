@@ -1,5 +1,5 @@
 /**
- * 8.js
+ * problems/00x/008.js
  * Largest product in a series
  */
 

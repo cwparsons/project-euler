@@ -1,5 +1,5 @@
 /**
- * 2.js
+ * problems/00x/002.js
  * Even Fibonacci numbers
  */
 

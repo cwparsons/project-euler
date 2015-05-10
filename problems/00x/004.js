@@ -1,5 +1,5 @@
 /**
- * 4.js
+ * problems/00x/004.js
  * Largest palindrome product
  */
 

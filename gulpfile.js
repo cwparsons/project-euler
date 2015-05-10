@@ -10,15 +10,15 @@ var mocha = require('gulp-mocha');
 
 gulp.task('jscs', function () {
 	return gulp.src([
-			'problems/*.js',
-			'test/*.js'
+			'problems/**/*.js',
+			'test/**/*.js'
 		])
 		.pipe(jscs());
 });
 
 gulp.task('mocha', function () {
 	return gulp.src([
-			'test/*.js'
+			'test/**/*.js'
 		])
 		.pipe(mocha());
 });

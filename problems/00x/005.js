@@ -1,5 +1,5 @@
 /**
- * 5.js
+ * problems/00x/005.js
  * Smallest multiple
  */
 

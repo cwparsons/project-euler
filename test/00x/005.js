@@ -1,8 +1,8 @@
 /**
- * test/005.js
+ * test/00x/005.js
  */
 
-var problem = require('../problems/005.js');
+var problem = require('../../problems/00x/005.js');
 var assert = require('assert');
 
 describe('Problem #5', function () {
