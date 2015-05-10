@@ -1,0 +1,30 @@
+/**
+ * 9.js
+ * Special Pythagorean triplet
+ */
+
+module.exports = function (sum) {
+	// Since a < b < c, and a + b + c = sum,
+	// a + (a + 1) + (a + 2) <= sum
+	// 3a <= sum - 3
+	// a <= (sum - 3)/3
+
+	var largestA = Math.ceil((sum - 3) / 3),
+		largestB = sum - largestA;
+
+	// Loop through possible a's
+	for (var a = 1; a <= largestA; a++) {
+		var aSquared = Math.pow(a, 2);
+
+		// Loop through possible b's
+		for (var b = a + 1; b <= largestB; b++) {
+			// Since a + b + c = sum
+			var c = sum - a - b;
+
+			// If a^2 + b^2 = c^2, then return
+			if (aSquared + Math.pow(b, 2) == Math.pow(c, 2)) {
+				return a * b * c;
+			}
+		}
+	}
+};

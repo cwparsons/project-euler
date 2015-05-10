@@ -1,0 +1,27 @@
+{
+  "name": "project-euler",
+  "version": "0.0.6",
+  "description": "A collection of personal Project Euler solutions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cwparsons/project-euler.git"
+  },
+  "keywords": [
+    "project euler",
+    "puzzles"
+  ],
+  "author": "Christopher Parsons",
+  "license": "MIT",
+  "homepage": "https://github.com/cwparsons/project-euler",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-jscs": "^1.6.0",
+    "gulp-mocha": "^2.0.1",
+    "gulp-sync": "^0.1.4",
+    "mocha": "^2.2.4"
+  }
+}
