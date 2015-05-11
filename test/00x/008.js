@@ -5,7 +5,7 @@
 var problem = require('../../problems/00x/008.js');
 var assert = require('assert');
 
-describe('Problem #8', function () {
+describe('Problem #008', function () {
 	it('should return 5,832 when the number of digits is 4', function () {
 		assert.equal(5832, problem(4));
 	});

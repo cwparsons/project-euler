@@ -5,7 +5,7 @@
 var problem = require('../../problems/00x/009.js');
 var assert = require('assert');
 
-describe('Problem #9', function () {
+describe('Problem #009', function () {
 	it('should return 31,875,000 when the sum is 1000', function () {
 		assert.equal(31875000, problem(1000));
 	});

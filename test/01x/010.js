@@ -5,7 +5,7 @@
 var problem = require('../../problems/01x/010.js');
 var assert = require('assert');
 
-describe('Problem #10', function () {
+describe('Problem #010', function () {
 	it('should return 17 when the limit is 10', function () {
 		assert.equal(17, problem(10));
 	});

@@ -5,7 +5,7 @@
 var problem = require('../../problems/00x/003.js');
 var assert = require('assert');
 
-describe('Problem #3', function () {
+describe('Problem #003', function () {
 	it('should return 44 when the prime factor is 13,195', function () {
 		assert.equal(29, problem(13195));
 	});
