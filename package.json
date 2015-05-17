@@ -23,5 +23,8 @@
     "gulp-mocha": "^2.0.1",
     "gulp-sync": "^0.1.4",
     "mocha": "^2.2.4"
+  },
+  "dependencies": {
+    "big-integer": "^1.4.4"
   }
 }
