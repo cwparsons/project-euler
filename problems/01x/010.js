@@ -1,5 +1,6 @@
 /**
  * problems/10.js
+ * Summation of primes
  */
 
 module.exports = function (size) {

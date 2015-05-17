@@ -1,27 +1,27 @@
 /**
-* problems/03x/033.js
-* Digit cancelling fractions
-*/
+ * problems/03x/033.js
+ * Digit cancelling fractions
+ */
+
+function gcd(a, b) {
+	return b ? gcd(b, a % b) : a;
+}
+
+function reduce(num, den) {
+	d = gcd(num, den);
+
+	return [num / d, den / d];
+}
+
+function splitInteger (n) {
+	var array = n.toString().split('');
+
+	return array.map(function (item) {
+		return parseInt(item, 10);
+	});
+}
 
 module.exports = function (digits) {
-	function gcd(a, b) {
-		return b ? gcd(b, a % b) : a;
-	}
-
-	function reduce(num, den) {
-		d = gcd(num, den);
-
-		return [num / d, den / d];
-	}
-
-	function splitInteger (n) {
-		var array = n.toString().split('');
-
-		return array.map(function (item) {
-			return parseInt(item, 10);
-		});
-	}
-
 	digits = parseInt(digits, 10);
 
 	var num,

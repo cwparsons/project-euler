@@ -3,17 +3,17 @@
  * Distinct powers
  */
 
+var bigInt = require('big-integer');
+
+function sortBy (a, b) {
+	return a - b;
+}
+
+function filterBy (item, index, array) {
+	return !index || bigInt(item).notEquals(array[index - 1]);
+}
+
 module.exports = function (size) {
-	var bigInt = require('big-integer');
-
-	function sortBy (a, b) {
-		return a - b;
-	}
-
-	function filterBy (item, index, array) {
-		return !index || bigInt(item).notEquals(array[index - 1]);
-	}
-
 	var sequence = [];
 
 	size = parseInt(size, 10);

@@ -3,26 +3,26 @@
  * Pandigital products
  */
 
+function hasDuplicatesOrZero(array) {
+	var values = {};
+
+	for (var i = 0; i < array.length; i++) {
+		var value = array[i];
+
+		if (value === '0' || Object.prototype.hasOwnProperty.call(values, value)) {
+			return true;
+		}
+
+		values[value] = true;
+	}
+
+	return false;
+}
+
 module.exports = function (digit) {
 	var products = [];
 
 	digit = parseInt(digit, 10);
-
-	function hasDuplicatesOrZero(array) {
-		var values = {};
-
-		for (var i = 0; i < array.length; i++) {
-			var value = array[i];
-
-			if (value === '0' || Object.prototype.hasOwnProperty.call(values, value)) {
-				return true;
-			}
-
-			values[value] = true;
-		}
-
-		return false;
-	}
 
 	// Loop through all possible multiplicands
 	for (var i = 1; i < 100; i++) {

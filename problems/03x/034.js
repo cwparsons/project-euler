@@ -3,7 +3,6 @@
  * Digit factorials
  */
 
-
 function factorial (n) {
 	return n <= 1 ? 1 : n * factorial(n - 1);
 }
@@ -31,7 +30,6 @@ module.exports = function (limit) {
 
 		if (curious) {
 			sum += i;
-			console.log(i, sum, split);
 		}
 	}
 

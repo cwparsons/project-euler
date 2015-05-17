@@ -3,7 +3,6 @@
  * Highly divisible triangular number
  */
 
-
 function numberOfDivisors (n) {
 	var divisors = 0;
 

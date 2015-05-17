@@ -1,5 +1,6 @@
 /**
  * problems/01x/018.js
+ * Maximum path sum I
  */
 
 module.exports = function (triangle) {
