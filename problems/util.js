@@ -61,6 +61,22 @@ util.factorial = function (n) {
 }
 
 /**
+ * getLetterPosition returns the position in the alphabet of a
+ * letter. E.g. S returns 19.
+ * @param  {String}  The character to find a position of
+ * @return {Integer} The position of the character
+ */
+util.getLetterPosition = function (char) {
+	if (char.length > 1) {
+		throw  'getLetterPosition only supports one character';
+	}
+
+	var alphabet = { A: 1, B: 2, C: 3, D: 4, E: 5, F: 6, G: 7, H: 8, I: 9, J: 10, K: 11, L: 12, M: 13, N: 14, O: 15, P: 16, Q: 17, R: 18, S: 19, T: 20, U: 21, V: 22, W: 23, X: 24, Y: 25, Z: 26 };
+
+	return alphabet[char.toUpperCase()];
+};
+
+/**
  * hasDuplicatesOrZero returns true if the given array has
  * duplicate elements (e.g. [1, 1, 2]) or one of it's values
  * is '0' or 0.

@@ -64,5 +64,10 @@ if (action === 'new') {
 	var args = process.argv[3];
 	var problem = require('./problems/' + action + '.js');
 
-	console.log(problem(parseInt(args, 10)));
+	if (isNaN(args)) {
+		console.log(problem(args));
+	} else {
+		console.log(problem(parseInt(args, 10)));
+	}
+
 }
