@@ -31,8 +31,6 @@ module.exports = function (limit) {
 	var length = 0,
 		d = 0;
 
-	limit = parseInt(limit, 10);
-
 	for (var i = 2; i < limit; i++) {
 		var cycle = recurringCycle(i);
 

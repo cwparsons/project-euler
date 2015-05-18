@@ -3,30 +3,20 @@
  * Largest palindrome product
  */
 
-function isPalindrome (string) {
-	var test = true;
-
-	for (var i = 0; i < string.length / 2; i++) {
-		test = string[i] === string[string.length - i - 1];
-
-		if (!test) {
-			break;
-		}
-	}
-
-	return test;
-}
+var util = require('../util.js');
 
 module.exports = function (digits) {
-	var largestProduct = 0;
+	var largestProduct = 0,
+		start = Math.pow(10, digits),
+		limit = Math.pow(10, digits - 1);
 
 	// Loop through all three digit numbers to create products
-	for (var i = Math.pow(10, digits); i > Math.pow(10, digits - 1); i--) {
-		for (var j = Math.pow(10, digits); j > Math.pow(10, digits - 1); j--) {
+	for (var i = start; i > limit; i--) {
+		for (var j = start; j > limit; j--) {
 			product = i * j;
 
 			// If the product is a palindrome and greater than our last product
-			if (isPalindrome(product.toString()) && product > largestProduct) {
+			if (util.isPalindrome(product.toString()) && product > largestProduct) {
 				largestProduct = product;
 			}
 		}

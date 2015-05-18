@@ -3,41 +3,11 @@
  * Truncatable primes
  */
 
-// Create sieve for prime numbers
-function createSieve (limit) {
-	var i,
-		sieve = [];
-
-	// Create the sieve
-	sieve[0] = false;
-	sieve[1] = false;
-
-	for (i = 2; i < limit; i++) {
-		sieve.push(true);
-	}
-
-	// Loop through sieve to create prime number list
-	for (i = 2; i < sieve.length; i++) {
-		for (var j = 2; j * i < sieve.length; j++) {
-			sieve[j * i] = false;
-		}
-	}
-
-	return sieve;
-}
+var util = require('../util.js');
 
 module.exports = function (limit) {
-	limit = parseInt(limit, 10);
-
-	var sieve = createSieve(limit),
-		primes = [];
-
-	// Create array of primes
-	for (var i = 0; i < sieve.length; i++) {
-		if (sieve[i]) {
-			primes.push(i);
-		}
-	}
+	var sieve = util.createSieve(limit),
+		primes = util.createPrimeList(sieve);
 
 	// Find the truncatable primes
 	var truncatablePrimes = primes.filter(function (prime) {

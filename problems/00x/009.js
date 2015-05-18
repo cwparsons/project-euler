@@ -14,15 +14,13 @@ module.exports = function (sum) {
 
 	// Loop through possible a's
 	for (var a = 1; a <= largestA; a++) {
-		var aSquared = Math.pow(a, 2);
-
 		// Loop through possible b's
 		for (var b = a + 1; b <= largestB; b++) {
 			// Since a + b + c = sum
 			var c = sum - a - b;
 
 			// If a^2 + b^2 = c^2, then return
-			if (aSquared + Math.pow(b, 2) == Math.pow(c, 2)) {
+			if (a * a + b * b == c * c) {
 				return a * b * c;
 			}
 		}

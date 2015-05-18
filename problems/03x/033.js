@@ -3,6 +3,8 @@
  * Digit cancelling fractions
  */
 
+var util = require('../util.js');
+
 // Find the greatest commond denominator
 function gcd(a, b) {
 	return b ? gcd(b, a % b) : a;
@@ -15,18 +17,7 @@ function reduce(num, den) {
 	return [num / d, den / d];
 }
 
-// Split an integer into an array of digits
-function splitInteger (n) {
-	var array = n.toString().split('');
-
-	return array.map(function (item) {
-		return parseInt(item, 10);
-	});
-}
-
 module.exports = function (digits) {
-	digits = parseInt(digits, 10);
-
 	var num,
 		den,
 		nums = [],
@@ -34,14 +25,14 @@ module.exports = function (digits) {
 
 	// Loop through all possible nums
 	for (var n = 10; n < Math.pow(10, digits); n++) {
-		num = splitInteger(n);
+		num = util.splitInteger(n);
 
 		// Loop through all possible den. Can start at i since
 		// j < i would be greater than 1.
 		for (var d = n + 1; d < Math.pow(10, digits); d++) {
 			var quotient = 0;
 
-			den = splitInteger(d);
+			den = util.splitInteger(d);
 
 			if (den[0] !== 0 && den[0] === num[0]) {
 				quotient = num[1] / den[1];

@@ -4,8 +4,6 @@
  */
 
 module.exports = function (limit) {
-	limit = parseInt(limit, 10);
-
 	var triangles = [],
 		longest = 0,
 		longestIndex = 0;

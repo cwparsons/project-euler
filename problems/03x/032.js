@@ -3,21 +3,7 @@
  * Pandigital products
  */
 
-function hasDuplicatesOrZero(array) {
-	var values = {};
-
-	for (var i = 0; i < array.length; i++) {
-		var value = array[i];
-
-		if (value === '0' || Object.prototype.hasOwnProperty.call(values, value)) {
-			return true;
-		}
-
-		values[value] = true;
-	}
-
-	return false;
-}
+var util = require('../util.js');
 
 module.exports = function (digit) {
 	var products = [];
@@ -29,7 +15,7 @@ module.exports = function (digit) {
 		var multiplicand = i.toString().split('');
 
 		// Check for duplicates early for speed
-		if (!hasDuplicatesOrZero(multiplicand)) {
+		if (!util.hasDuplicatesOrZero(multiplicand)) {
 			// Loop through all possible multipliers
 			// The product must be less than 10,000 since we need to have
 			// a max of 9 digits across all three numbers
@@ -39,7 +25,7 @@ module.exports = function (digit) {
 
 				var combined = multiplicand.concat(multiplier).concat(product);
 
-				if (combined.length === digit && !hasDuplicatesOrZero(combined)) {
+				if (combined.length === digit && !util.hasDuplicatesOrZero(combined)) {
 					products.push(i * j);
 				}
 			}

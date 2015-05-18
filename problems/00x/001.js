@@ -3,6 +3,10 @@
  * Multiples of 3 and 5
  */
 
+function isFactor (i, factor) {
+	return i % factor === 0;
+}
+
 module.exports = function (limit) {
 	var FACTORS = [3, 5];
 
@@ -10,12 +14,10 @@ module.exports = function (limit) {
 		sum = 0,
 		i;
 
-	function isFactor (factor) {
-		return i % factor === 0;
-	}
-
-	for (i = 1; i < limit; i++) {
-		var factor = FACTORS.some(isFactor);
+	for (var i = 1; i < limit; i++) {
+		var factor = FACTORS.some(function (factor) {
+			return isFactor(i, factor);
+		});
 
 		if (factor) {
 			sum += i;

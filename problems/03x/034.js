@@ -3,26 +3,16 @@
  * Digit factorials
  */
 
-function factorial (n) {
-	return n <= 1 ? 1 : n * factorial(n - 1);
-}
-
-function splitInteger (n) {
-	var array = n.toString().split('');
-
-	return array.map(function (item) {
-		return parseInt(item, 10);
-	});
-}
+var util = require('../util.js');
 
 module.exports = function (limit) {
 	var sum = 0;
 
 	// Skip 1, 2
 	for (var i = 3; i < limit; i++) {
-		var split = splitInteger(i);
+		var split = util.splitInteger(i);
 
-		split = split.map(factorial);
+		split = split.map(util.factorial);
 
 		var curious = i === split.reduce(function (previous, value) {
 			return previous + value;

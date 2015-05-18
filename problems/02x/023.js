@@ -3,27 +3,7 @@
  * Non-abundant sums
  */
 
-function sumOfProperDivisors (n) {
-	var divisors = [];
-
-	// Loop through the first half of divisors
-	for (var i = 1; i <= Math.floor(Math.sqrt(n)); i++) {
-		if (n % i === 0) {
-			divisors.push(i);
-
-			// Do not include number, and don't double count
-			// squares
-			if (i !== 1 && n / i !== i) {
-				divisors.push(n / i);
-			}
-		}
-	}
-
-	// Return the sum of these divisors
-	return divisors.reduce(function (sum, divisor) {
-		return sum + divisor;
-	}, 0);
-}
+var util = require('../util.js');
 
 module.exports = function (limit) {
 	var abundantNumbers = [],
@@ -34,7 +14,7 @@ module.exports = function (limit) {
 	// Create a list of abudent numbers and a sieve for faster
 	// access.
 	for (i = 0; i <= limit; i++) {
-		if (i < sumOfProperDivisors(i)) {
+		if (i < util.sumOfProperDivisors(i)) {
 			abundantNumbers.push(i);
 			abundantSieve.push(true);
 		} else {

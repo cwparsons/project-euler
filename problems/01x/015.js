@@ -3,13 +3,7 @@
  * Lattice paths
  */
 
-function factorial (n) {
-	if (n === 1) {
-		return 1;
-	}
-
-	return n * factorial(n - 1);
-}
+var util = require('../util.js');
 
 module.exports = function (size) {
 	size = parseInt(size, 10);
@@ -17,7 +11,7 @@ module.exports = function (size) {
 	var n = size * 2; // Row
 	var r = size;     // Position in row
 
-	var nCr = factorial(n) / (factorial(r) * factorial(n - r));
+	var nCr = util.factorial(n) / (util.factorial(r) * util.factorial(n - r));
 
 	return Math.floor(nCr);
 };

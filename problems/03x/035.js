@@ -3,32 +3,11 @@
  * Circular primes
  */
 
-// Create sieve for prime numbers
-function createSieve (limit) {
-	var i,
-		sieve = [];
-
-	// Create the sieve
-	sieve[0] = false;
-	sieve[1] = false;
-
-	for (i = 2; i < limit; i++) {
-		sieve.push(true);
-	}
-
-	// Loop through sieve to create prime number list
-	for (i = 2; i < sieve.length; i++) {
-		for (var j = 2; j * i < sieve.length; j++) {
-			sieve[j * i] = false;
-		}
-	}
-
-	return sieve;
-}
+var util = require('../util.js');
 
 // Create a list of rotations
 function getRotations (prime) {
-	var digits = splitInteger(prime);
+	var digits = util.splitInteger(prime);
 
 	return rotate(digits);
 }
@@ -60,35 +39,17 @@ function rotate (list) {
 	return rotations;
 }
 
-// Split an integer into an array of digits
-function splitInteger (n) {
-	var array = n.toString().split('');
-
-	return array.map(function (item) {
-		return parseInt(item, 10);
-	});
-}
-
 module.exports = function (limit) {
-	limit = parseInt(limit, 10);
-
-	var sieve = createSieve(limit),
-		list = [],
+	var sieve = util.createSieve(limit),
+		list = util.createPrimeList(sieve),
 		circularPrimes = [2]; // Add 2 for ease later on
-
-	// Create array of primes
-	for (var i = 0; i < sieve.length; i++) {
-		if (sieve[i]) {
-			list.push(i);
-		}
-	}
 
 	// Filter through prime list
 	list.filter(function (prime) {
 		// If any of the digits are divisible by 2, skip it, since
 		// one of the rotations must end in a non-prime number.
 		// Fails on 2, so we need to add 2 earlier on.
-		if (!splitInteger(prime).some(function (digit) {
+		if (!util.splitInteger(prime).some(function (digit) {
 			return digit % 2 === 0;
 		})) {
 			var rotations = getRotations(prime);

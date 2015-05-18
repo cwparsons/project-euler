@@ -3,28 +3,7 @@
  * Quadratic primes
  */
 
-// Create sieve for prime numbers
-function createSieve (limit) {
-	var i,
-		sieve = [];
-
-	// Create the sieve
-	sieve[0] = false;
-	sieve[1] = false;
-
-	for (i = 2; i < limit; i++) {
-		sieve.push(true);
-	}
-
-	// Loop through sieve to create prime number list
-	for (i = 2; i < sieve.length; i++) {
-		for (var j = 2; j * i < sieve.length; j++) {
-			sieve[j * i] = false;
-		}
-	}
-
-	return sieve;
-}
+var util = require('../util.js');
 
 // Quadratic formula
 function formula(n, a, b) {
@@ -32,7 +11,7 @@ function formula(n, a, b) {
 }
 
 module.exports = function (limit) {
-	var sieve = createSieve(Math.pow(10, 6)),
+	var sieve = util.createSieve(limit),
 		length = 0,
 		longestA = 0,
 		longestB = 0,
@@ -40,7 +19,7 @@ module.exports = function (limit) {
 
 	// Since the first value is n = 0, b must be prime.
 	// Create a list of primes to use as b
-	for (var i = 0; i < sieve.length; i++) {
+	for (var i = 0; i <= sieve.length; i++) {
 		if (sieve[i] && i <= limit) {
 			primes.push(i);
 			primes.push(i * -1);

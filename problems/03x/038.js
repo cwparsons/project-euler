@@ -3,27 +3,9 @@
  * Pandigital multiples
  */
 
-// Returns true if an array has duplicates or zeroes,
-// similar properties to a pandigital
-function hasDuplicatesOrZero(array) {
-	var values = {};
-
-	for (var i = 0; i < array.length; i++) {
-		var value = array[i];
-
-		if (value === '0' || Object.prototype.hasOwnProperty.call(values, value)) {
-			return true;
-		}
-
-		values[value] = true;
-	}
-
-	return false;
-}
+var util = require('../util.js');
 
 module.exports = function (digits) {
-	digits = parseInt(digits, 10);
-
 	var pandigitals = [];
 
 	// Loop to 10000. Any farther, concats of n * 2 would be too
@@ -42,7 +24,7 @@ module.exports = function (digits) {
 			if (string.length > 8) {
 				string = string.split('');
 
-				if (!hasDuplicatesOrZero(string)) {
+				if (!util.hasDuplicatesOrZero(string)) {
 					pandigitals.push(string.join(''));
 					break;
 				}

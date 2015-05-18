@@ -16,8 +16,6 @@ function filterBy (item, index, array) {
 module.exports = function (size) {
 	var sequence = [];
 
-	size = parseInt(size, 10);
-
 	// Create each element
 	for (var a = 2; a <= size; a++) {
 		for (var b = 2; b <= size; b++) {
