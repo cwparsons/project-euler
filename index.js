@@ -64,5 +64,5 @@ if (action === 'new') {
 	var args = process.argv[3];
 	var problem = require('./problems/' + action + '.js');
 
-	console.log(problem(args));
+	console.log(problem(parseInt(args, 10)));
 }
