@@ -6,16 +6,32 @@
 var util = require('../util.js');
 
 module.exports = function (n) {
-	var values = [];
+	var set = [];
 
-	// Create strings
 	for (var i = 0; i <= 9; i++) {
-		values.push(i.toString());
+		set.push(i);
 	}
 
-	var permutations = util.permutate(values);
+	var remainder = n,
+		values = [];
 
-	if (permutations.length >= n) {
-		return permutations[n - 1];
+	for (var i = 9; i >= 0; i--) {
+		var nFactorial = util.factorial(i);
+		var divisor = Math.floor(remainder / nFactorial);;
+
+		remainder = remainder % nFactorial;
+
+		if (remainder <= 0 && divisor >= 0) {
+			divisor--;
+			remainder = nFactorial / divisor;
+		}
+
+		// Get the value from the remaining set of
+		values.push(set[divisor]);
+
+		// Remove the chosen element
+		set.splice(divisor, 1);
 	}
+
+	return parseInt(values.join(''), 10);
 };

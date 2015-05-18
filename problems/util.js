@@ -33,6 +33,7 @@ util.createSieve = function (limit) {
 	return sieve;
 };
 
+
 /**
  * createPrimeList returns an array of prime numbers.
  * @param  {Array} A sieve of primes
@@ -51,6 +52,7 @@ util.createPrimeList = function (sieve) {
 	return primes;
 };
 
+
 /**
  * factorial returns the factorial of n (e.g. n!)
  * @param  {Integer} The number to factorial
@@ -58,7 +60,8 @@ util.createPrimeList = function (sieve) {
  */
 util.factorial = function (n) {
 	return n <= 1 ? 1 : n * util.factorial(n - 1);
-}
+};
+
 
 /**
  * getLetterPosition returns the position in the alphabet of a
@@ -68,13 +71,21 @@ util.factorial = function (n) {
  */
 util.getLetterPosition = function (char) {
 	if (char.length > 1) {
-		throw  'getLetterPosition only supports one character';
+		throw new  'getLetterPosition only supports one character';
 	}
 
-	var alphabet = { A: 1, B: 2, C: 3, D: 4, E: 5, F: 6, G: 7, H: 8, I: 9, J: 10, K: 11, L: 12, M: 13, N: 14, O: 15, P: 16, Q: 17, R: 18, S: 19, T: 20, U: 21, V: 22, W: 23, X: 24, Y: 25, Z: 26 };
+	var alphabet = {
+		A:  1, B:  2, C:  3, D:  4, E:  5,
+		F:  6, G:  7, H:  8, I:  9, J: 10,
+		K: 11, L: 12, M: 13, N: 14, O: 15,
+		P: 16, Q: 17, R: 18, S: 19, T: 20,
+		U: 21, V: 22, W: 23, X: 24, Y: 25,
+		Z: 26
+	};
 
 	return alphabet[char.toUpperCase()];
 };
+
 
 /**
  * hasDuplicatesOrZero returns true if the given array has
@@ -90,7 +101,9 @@ util.hasDuplicatesOrZero = function (array) {
 	for (var i = 0; i < array.length; i++) {
 		var value = array[i];
 
-		if (value === '0' || value === 0 || Object.prototype.hasOwnProperty.call(values, value)) {
+		if (value === '0'
+			|| value === 0
+			|| Object.prototype.hasOwnProperty.call(values, value)) {
 			return true;
 		}
 
@@ -99,6 +112,7 @@ util.hasDuplicatesOrZero = function (array) {
 
 	return false;
 };
+
 
 /**
  * isPandigital checks to see if an integer is pandigital,
@@ -129,6 +143,7 @@ util.isPandigital = function (integer, n) {
 	return truth;
 };
 
+
 /**
  * isPalindrome returns true if the integer is a palindrome.
  * @param  {Integer} The integer to check
@@ -147,37 +162,6 @@ util.isPalindrome = function (n) {
 	return truth;
 };
 
-/**
- * permutate creates an array of permutations from a string
- * @param  {Array} An array of values to permutate
- * @return {Array} An array of permutations
- */
-util.permutate = function (values) {
-	// Use a base case of two to try to save some time
-	if (values.length === 2) {
-		return [values[0] + values[1], values[1] + values[0]];
-	}
-
-	var permutations = [],
-		usedValues = [];
-
-	// Loop through each value of the array
-	for (var i = values.length; i > 0; i--) {
-		var value = values.shift();
-
-		// Recursively get the permutations using the other values
-		var list = util.permutate(usedValues.concat(values));
-
-		// Use the initial value and all new permutations to create more permutations
-		for (var j = 0; j < list.length; j++) {
-			permutations.push(value + list[j]);
-		}
-
-		usedValues.push(value);
-	}
-
-	return permutations;
-};
 
 /**
  * numberOfDivisors returns the number of divisors
@@ -195,7 +179,8 @@ util.numberOfDivisors = function (n) {
 	}
 
 	return divisors * 2;
-}
+};
+
 
 /**
  * sumOfProperDivisors creates a list of proper divisors and
@@ -239,6 +224,7 @@ util.splitInteger = function (n) {
 		return parseInt(item, 10);
 	});
 };
+
 
 /**
  * toBase converts an integer into another base

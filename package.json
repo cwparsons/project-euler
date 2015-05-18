@@ -1,6 +1,6 @@
 {
   "name": "project-euler",
-  "version": "0.0.6",
+  "version": "0.4.2",
   "description": "A collection of personal Project Euler solutions.",
   "main": "index.js",
   "scripts": {
@@ -21,7 +21,6 @@
     "gulp": "^3.8.11",
     "gulp-jscs": "^1.6.0",
     "gulp-mocha": "^2.0.1",
-    "gulp-sync": "^0.1.4",
     "mocha": "^2.2.4"
   },
   "dependencies": {
