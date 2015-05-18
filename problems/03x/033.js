@@ -3,16 +3,19 @@
  * Digit cancelling fractions
  */
 
+// Find the greatest commond denominator
 function gcd(a, b) {
 	return b ? gcd(b, a % b) : a;
 }
 
+// Reduce a fraction to the smallest common denominator
 function reduce(num, den) {
 	d = gcd(num, den);
 
 	return [num / d, den / d];
 }
 
+// Split an integer into an array of digits
 function splitInteger (n) {
 	var array = n.toString().split('');
 
