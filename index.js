@@ -16,7 +16,7 @@ if (action === 'new') {
 
 		fs.exists(problemFolder, function (folderExists) {
 			if (!folderExists) {
-				fs.mkdirSync(problemFolder, 0766);
+				fs.mkdirSync(problemFolder, '0766');
 			}
 
 			var problemFilepath = problemFolder + '/' + filename + '.js';
