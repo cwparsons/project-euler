@@ -96,9 +96,10 @@ util.getLetterPosition = function (char) {
  *                   has a zero
  */
 util.hasDuplicatesOrZero = function (array) {
-	var values = {};
+	var values = {},
+		length = array.length;
 
-	for (var i = 0; i < array.length; i++) {
+	for (var i = 0; i < length; i++) {
 		var value = array[i];
 
 		if (value === '0'
@@ -134,13 +135,13 @@ util.isPandigital = function (integer, n) {
 		return false;
 	}
 
-	var truth = true;
+	var isPandigital = true;
 
-	for (var i = 1; truth && i <= n; i++) {
-		truth = integer.indexOf(i) > -1;
+	for (var i = 1; isPandigital && i <= n; i++) {
+		isPandigital = integer.indexOf(i) > -1;
 	}
 
-	return truth;
+	return isPandigital;
 };
 
 
@@ -150,16 +151,17 @@ util.isPandigital = function (integer, n) {
  * @return {Boolean} Returns true if integer is a palindrome
  */
 util.isPalindrome = function (n) {
-	var truth = true;
+	var isPalindrome = true;
 
 	n = n.toString().split('');
+	length = n.length;
 
 	// Loop through the first half of the characters
-	for (var i = 0; truth && i < n.length / 2; i++) {
-		truth = n[i] === n[n.length - i - 1];
+	for (var i = 0; isPalindrome && i < length / 2; i++) {
+		isPalindrome = n[i] === n[length - i - 1];
 	}
 
-	return truth;
+	return isPalindrome;
 };
 
 
@@ -179,6 +181,20 @@ util.numberOfDivisors = function (n) {
 	}
 
 	return divisors * 2;
+};
+
+
+/**
+ * splitInteger splits a number into an array of digits
+ * @param  {Integer} The integer to split
+ * @return {Array}   An array of digits
+ */
+util.splitInteger = function (n) {
+	var array = n.toString().split('');
+
+	return array.map(function (item) {
+		return parseInt(item, 10);
+	});
 };
 
 
@@ -213,20 +229,6 @@ util.sumOfProperDivisors = function (n) {
 
 
 /**
- * splitInteger splits a number into an array of digits
- * @param  {Integer} The integer to split
- * @return {Array}   An array of digits
- */
-util.splitInteger = function (n) {
-	var array = n.toString().split('');
-
-	return array.map(function (item) {
-		return parseInt(item, 10);
-	});
-};
-
-
-/**
  * toBase converts an integer into another base
  * @param  {Integer}   An integer to convert to another base
  * @param  {[Integer]} The base to convert to
@@ -248,4 +250,3 @@ util.toBase = function (n, base) {
 };
 
 module.exports = util;
-
