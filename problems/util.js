@@ -40,6 +40,10 @@ util.createSieve = function (limit) {
  * @return {Array} An array of prime numbers
  */
 util.createPrimeList = function (sieve) {
+	if (typeof sieve !== 'object') {
+		sieve = util.createSieve(sieve);
+	}
+
 	var primes = [],
 		length = sieve.length;
 
