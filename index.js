@@ -25,7 +25,7 @@ if (action === 'new') {
 				if (exists) {
 					console.log('Problem already exists');
 				} else {
-					var problemTemplate = '\/**\r\n * problems/' + folder + '/' + filename + '.js\r\n *\/\r\n\r\nmodule.exports = function (arg) {\r\n\r\n};';
+					var problemTemplate = '\/**\r\n * problems/' + folder + '/' + filename + '.js\r\n *\r\n *\/\r\n\r\nmodule.exports = function (arg) {\r\n\r\n};\r\n';
 
 					fs.writeFile(problemFilepath, problemTemplate, function (err) {
 						if (err) {
@@ -49,7 +49,7 @@ if (action === 'new') {
 				if (exists) {
 					console.log('Test already exists');
 				} else {
-					var testTemplate = '\/**\r\n * test\/' + folder + '\/' + filename + '.js\r\n */\r\n\r\nvar problem = require(\'../../problems/' + folder + '/' + filename + '.js\');\r\nvar assert = require(\'assert\');\r\n\r\ndescribe(\'Problem #' + filename + '\', function () {\r\n\t\/\/ it(\'should return x when the limit is y\', function () {\r\n\t\t\/\/ assert.equal(x, problem(y));\r\n\t\/\/ });\r\n});\r\n';
+					var testTemplate = '\/**\r\n * test\/' + folder + '\/' + filename + '.js\r\n */\r\n\r\nvar problem = require(\'../../problems/' + folder + '/' + filename + '.js\');\r\nvar assert = require(\'assert\');\r\n\r\ndescribe(\'Problem #' + filename + '\', function () {\r\n\tit(\'should return x when the limit is y\', function () {\r\n\t\tassert.equal(x, problem(y));\r\n\t});\r\n});\r\n';
 
 					fs.writeFile(testFilepath, testTemplate, function (err) {
 						if (err) {
