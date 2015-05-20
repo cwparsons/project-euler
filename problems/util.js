@@ -62,12 +62,22 @@ util.createPrimeList = function (sieve) {
  * @param  {Integer} The number to factorial
  * @return {Integer} The value of n!
  */
-util.factorial = function (n, r) {
+util.factorial = function (n) {
+	return util.factorialDivided(n, 1);
+};
+
+
+/**
+ * factorial returns the factorial of n (e.g. n!)
+ * @param  {Integer} The number to factorial
+ * @return {Integer} The value of n!
+ */
+util.factorialDivided = function (n, r) {
 	if (typeof r === 'undefined') {
 		r = 1;
 	}
 
-	return n <= r ? 1 : n * util.factorial(n - 1, r);
+	return n <= r ? 1 : n * util.factorialDivided(n - 1, r);
 };
 
 
@@ -180,7 +190,7 @@ util.isPalindrome = function (n) {
  * @return {Integer}   The number of combinations
  */
 util.nCr = function (n, r) {
-	return util.factorial(n, r) / util.factorial(n - r);
+	return util.factorialDivided(n, r) / util.factorialDivided(n - r);
 };
 
 
