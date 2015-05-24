@@ -182,12 +182,19 @@ util.isPalindrome = function (n) {
 	return isPalindrome;
 };
 
+
+var primeList = {};
+
 /**
  * isPrime returns true if the integer is a prmie number.
  * @param  {Integer} The integer to check if prime
  * @return {Boolean} Returns true if n is prime
  */
 util.isPrime = function (n) {
+	if (primeList[n]) {
+		return primeList[n];
+	}
+
 	// If it isn't divisible by two, just try odd divisors
 	if (n % 2 === 0 || n % 3 === 0) {
 		return false;
@@ -196,10 +203,14 @@ util.isPrime = function (n) {
 
 		for (var i = 5; i <= limit; i += 6) {
 			if (n % i === 0 || n % (i + 2) === 0) {
+				primeList[n] = false;
+
 				return false;
 			}
 		}
 	}
+
+	primeList[n] = true;
 
 	return true;
 }
