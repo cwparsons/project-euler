@@ -4,6 +4,24 @@
 
 var util = {};
 
+
+/**
+ * createArray returns an array of integer values from 1
+ * to N.
+ * @param  {Integer} The length of the array
+ * @return {Array}   The array of values 1 to N
+ */
+util.createArray = function (limit) {
+	var array = [];
+
+	for (var i = 1; i <= limit; i++) {
+		array.push(i);
+	}
+
+	return array;
+}
+
+
 /**
  * createSieve returns an array of boolean values that are
  * true on primes and false otherwise.
