@@ -5,10 +5,26 @@
 var util = {};
 
 /**
+ * createArray returns an array of integers from 1 to limit
+ * @param  {Integer} limit The length of the array to create
+ * @return {Array}         An array from 1 to N
+ */
+util.createArray = function (limit) {
+	var array = [];
+
+	for (var i = 1; i <= limit; i++) {
+		array.push(i);
+	}
+
+	return array;
+};
+
+
+/**
  * createSieve returns an array of boolean values that are
  * true on primes and false otherwise.
- * @param  {Integer} The length of the sieve
- * @return {Array}   The sieve array
+ * @param  {Integer} limit The length of the sieve
+ * @return {Array}         The sieve array
  */
 util.createSieve = function (limit) {
 	// Create the sieve
@@ -36,8 +52,8 @@ util.createSieve = function (limit) {
 
 /**
  * createPrimeList returns an array of prime numbers.
- * @param  {Array} A sieve of primes
- * @return {Array} An array of prime numbers
+ * @param  {Array} sieve A sieve of primes
+ * @return {Array}       An array of prime numbers
  */
 util.createPrimeList = function (sieve) {
 	if (typeof sieve !== 'object') {
@@ -59,8 +75,8 @@ util.createPrimeList = function (sieve) {
 
 /**
  * factorial returns the factorial of n (e.g. n!)
- * @param  {Integer} The number to factorial
- * @return {Integer} The value of n!
+ * @param  {Integer} n The number to factorial
+ * @return {Integer}   The value of n!
  */
 util.factorial = function (n) {
 	return util.factorialDivided(n, 1);
@@ -69,8 +85,9 @@ util.factorial = function (n) {
 
 /**
  * factorial returns the factorial of n (e.g. n!)
- * @param  {Integer} The number to factorial
- * @return {Integer} The value of n!
+ * @param  {Integer} n The number to factorial
+ * @param  {Integer} r The number to factorial
+ * @return {Integer}   The value of n!
  */
 util.factorialDivided = function (n, r) {
 	if (typeof r === 'undefined') {
@@ -84,8 +101,8 @@ util.factorialDivided = function (n, r) {
 /**
  * getLetterPosition returns the position in the alphabet of a
  * letter. E.g. S returns 19.
- * @param  {String}  The character to find a position of
- * @return {Integer} The position of the character
+ * @param  {String}  char The character to find a position of
+ * @return {Integer}      The position of the character
  */
 util.getLetterPosition = function (char) {
 	if (char.length > 1) {
@@ -109,9 +126,9 @@ util.getLetterPosition = function (char) {
  * hasDuplicatesOrZero returns true if the given array has
  * duplicate elements (e.g. [1, 1, 2]) or one of it's values
  * is '0' or 0.
- * @param  {Array}   The array to check over
- * @return {Boolean} Returns true if has duplicate values or
- *                   has a zero
+ * @param  {Array}   array The array to check over
+ * @return {Boolean}       Returns true if has duplicate values or
+ *                         has a zero
  */
 util.hasDuplicatesOrZero = function (array) {
 	var values = {},
@@ -134,11 +151,31 @@ util.hasDuplicatesOrZero = function (array) {
 
 
 /**
+ * isPalindrome returns true if the integer is a palindrome.
+ * @param  {Integer} n The integer to check
+ * @return {Boolean}   Returns true if integer is a palindrome
+ */
+util.isPalindrome = function (n) {
+	var isPalindrome = true;
+
+	n = n.toString().split('');
+	length = n.length;
+
+	// Loop through the first half of the characters
+	for (var i = 0; isPalindrome && i < length / 2; i++) {
+		isPalindrome = n[i] === n[length - i - 1];
+	}
+
+	return isPalindrome;
+};
+
+
+/**
  * isPandigital checks to see if an integer is pandigital,
  * that is, contains all digits 1 to n exactly once.
- * @param  {Integer}   The number to check
- * @param  {[Integer]} The number of digits necessary
- * @return {Boolean}   Returns true if integer is pandigital
+ * @param  {Integer}   integer The number to check
+ * @param  {[Integer]} n       The number of digits necessary
+ * @return {Boolean}           Returns true if integer is pandigital
  */
 util.isPandigital = function (integer, n) {
 	integer = integer.toString();
@@ -164,30 +201,13 @@ util.isPandigital = function (integer, n) {
 
 
 /**
- * isPalindrome returns true if the integer is a palindrome.
- * @param  {Integer} The integer to check
- * @return {Boolean} Returns true if integer is a palindrome
- */
-util.isPalindrome = function (n) {
-	var isPalindrome = true;
-
-	n = n.toString().split('');
-	length = n.length;
-
-	// Loop through the first half of the characters
-	for (var i = 0; isPalindrome && i < length / 2; i++) {
-		isPalindrome = n[i] === n[length - i - 1];
-	}
-
-	return isPalindrome;
-};
-
-/**
  * isPrime returns true if the integer is a prmie number.
- * @param  {Integer} The integer to check if prime
- * @return {Boolean} Returns true if n is prime
+ * @param  {Integer} n The integer to check if prime
+ * @return {Boolean}   Returns true if n is prime
  */
 util.isPrime = function (n) {
+	n = parseInt(n, 10);
+
 	// If it isn't divisible by two, just try odd divisors
 	if (n % 2 === 0 || n % 3 === 0) {
 		return false;
@@ -204,6 +224,7 @@ util.isPrime = function (n) {
 	return true;
 }
 
+
 /**
  * nCr aka `from n choose r`
  * @param  {Integer} n A combination of `n` things
@@ -217,8 +238,8 @@ util.nCr = function (n, r) {
 
 /**
  * numberOfDivisors returns the number of divisors
- * @param  {Integer} The number to find the divisors for
- * @return {Integer} The number of divisors
+ * @param  {Integer} n The number to find the divisors for
+ * @return {Integer}   The number of divisors
  */
 util.numberOfDivisors = function (n) {
 	var divisors = 0,
@@ -235,9 +256,42 @@ util.numberOfDivisors = function (n) {
 
 
 /**
+ * permutate gives all permutations of an array
+ * @param  {Array} values The array of values to permutate
+ * @return {Array}        An array of permutations
+ */
+util.permutate = function (values) {
+	// Use a base case of two to try to save some time
+	if (values.length === 2) {
+		return [values[0] + values[1], values[1] + values[0]];
+	}
+
+	var permutations = [],
+		usedValues = [];
+
+	// Loop through each value of the array
+	for (var i = values.length; i > 0; i--) {
+		var value = values.shift();
+
+		// Recursively get the permutations using the other values
+		var list = util.permutate(usedValues.concat(values));
+
+		// Use the initial value and all new permutations to create more permutations
+		for (var j = 0; j < list.length; j++) {
+			permutations.push(value + list[j]);
+		}
+
+		usedValues.push(value);
+	}
+
+	return permutations;
+};
+
+
+/**
  * splitInteger splits a number into an array of digits
- * @param  {Integer} The integer to split
- * @return {Array}   An array of digits
+ * @param  {Integer} n The integer to split
+ * @return {Array}     An array of digits
  */
 util.splitInteger = function (n) {
 	var array = n.toString().split('');
@@ -251,8 +305,8 @@ util.splitInteger = function (n) {
 /**
  * sumOfProperDivisors creates a list of proper divisors and
  * adds them all together
- * @param  {Integer} The integer to find the divisors from
- * @return {Integer} The sum of all proper divisors
+ * @param  {Integer} n The integer to find the divisors from
+ * @return {Integer}   The sum of all proper divisors
  */
 util.sumOfProperDivisors = function (n) {
 	var divisors = [],
@@ -280,9 +334,9 @@ util.sumOfProperDivisors = function (n) {
 
 /**
  * toBase converts an integer into another base
- * @param  {Integer}   An integer to convert to another base
- * @param  {[Integer]} The base to convert to
- * @return {String}    The converted number as a string
+ * @param  {Integer}   n    An integer to convert to another base
+ * @param  {[Integer]} base The base to convert to
+ * @return {String}         The converted number as a string
  */
 util.toBase = function (n, base) {
 	if (typeof base === 'undefined') {
