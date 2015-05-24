@@ -4,6 +4,24 @@
 
 var util = {};
 
+
+/**
+ * createArray returns an array of integer values from 1
+ * to N.
+ * @param  {Integer} The length of the array
+ * @return {Array}   The array of values 1 to N
+ */
+util.createArray = function (limit) {
+	var array = [];
+
+	for (var i = 1; i <= limit; i++) {
+		array.push(i);
+	}
+
+	return array;
+}
+
+
 /**
  * createArray returns an array of integers from 1 to limit
  * @param  {Integer} limit The length of the array to create
@@ -201,12 +219,36 @@ util.isPandigital = function (integer, n) {
 
 
 /**
+ * isPalindrome returns true if the integer is a palindrome.
+ * @param  {Integer} The integer to check
+ * @return {Boolean} Returns true if integer is a palindrome
+ */
+util.isPalindrome = function (n) {
+	var isPalindrome = true;
+
+	n = n.toString().split('');
+	length = n.length;
+
+	// Loop through the first half of the characters
+	for (var i = 0; isPalindrome && i < length / 2; i++) {
+		isPalindrome = n[i] === n[length - i - 1];
+	}
+
+	return isPalindrome;
+};
+
+
+var primeList = {};
+
+/**
  * isPrime returns true if the integer is a prmie number.
  * @param  {Integer} n The integer to check if prime
  * @return {Boolean}   Returns true if n is prime
  */
 util.isPrime = function (n) {
-	n = parseInt(n, 10);
+	if (primeList[n]) {
+		return primeList[n];
+	}
 
 	// If it isn't divisible by two, just try odd divisors
 	if (n % 2 === 0 || n % 3 === 0) {
@@ -216,10 +258,14 @@ util.isPrime = function (n) {
 
 		for (var i = 5; i <= limit; i += 6) {
 			if (n % i === 0 || n % (i + 2) === 0) {
+				primeList[n] = false;
+
 				return false;
 			}
 		}
 	}
+
+	primeList[n] = true;
 
 	return true;
 }
